@@ -1,6 +1,6 @@
+import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping }  from "@fortawesome/free-solid-svg-icons";
+
 
 const NavBar = () => {
     return (
@@ -11,10 +11,7 @@ const NavBar = () => {
                 <li><a href='#'>Sandwich de Miga</a></li>
                 <li><a href='#'>Alfajores y Conitos</a></li>
             </ul>
-            <FontAwesomeIcon 
-                icon={faCartShopping}
-                className='btn-menu'
-            />
+            <CartWidget />
         </nav>
     )
 }

@@ -31,11 +31,3 @@
     color: #fe8cb3;
     transition: .4s;
 }
-
-.btn-menu {
-    margin-right: 30px;
-    font-size: 25px;
-    color: #fff;
-    cursor: pointer;
-    /*display: none;*/
-}
