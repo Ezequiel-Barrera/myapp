@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import './ItemCount.css'
 
 const ItemCount = ({ stock, initial }) => {
 
@@ -26,19 +27,13 @@ const ItemCount = ({ stock, initial }) => {
 
 
     return (
-        <div className="d-flex flex-column">
-        <div className="d-flex mt-3">
-            <Button variant="primary" onClick={onDecrease} className="px-3 mx-3">
-            -
-            </Button>{" "}
-            <h3 className="px-3 mx-3">{count}</h3>
-            <Button variant="primary" onClick={onIncrease} className="px-3 mx-3">
-            +
-            </Button>{" "}
-        </div>
-        <Button variant="danger" onClick={onAdd} className="mt-3">
-            Agregar al Carrito
-        </Button>{" "}
+        <div className="item-count-container">
+            <div>
+                <Button variant="primary" onClick={onDecrease}>-</Button>{" "}
+                <h3>{count}</h3>
+                <Button variant="primary" onClick={onIncrease}>+</Button>{" "}
+            </div>
+            <Button variant="danger" onClick={onAdd}>Agregar al Carrito</Button>{" "}
         </div>
     );
 };
