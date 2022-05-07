@@ -1,3 +1,4 @@
+
 const data = [
     {
         id: 1,
@@ -32,7 +33,7 @@ const data = [
         id: 4,
         image:
             "https://app.contabilium.com/files/explorer/20302/Productos-Servicios/concepto-4886285.jpg",
-        title: "Radeon 6800XT",
+        title: "Rade 6800XT",
         descripcion: "este es el cuarto producto",
         categoria: "Placas-de-video",
         price: "280000",
@@ -41,7 +42,7 @@ const data = [
     {
         id: 5,
         image: "https://m.media-amazon.com/images/I/81U5H5c0jyL._AC_SL1500_.jpg",
-        title: "Radeon 6900XT",
+        title: "Rade 6900XT",
         descripcion: "este es el quinto producto",
         categoria: "Placas-de-video",
         price: "305000",
@@ -79,11 +80,20 @@ const data = [
     },
 ];
     
-const getData = new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(data);
-    }, 2000);
-});
+function getData(categoriaid) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            if (categoriaid) {
+                const productoFiltrado = data.filter( product => {
+                    return data.categoria == categoriaid
+                })
+                resolve(productoFiltrado)
+            } else {
+                resolve(data);
+            }
+        }, 700);
+    })
+}   
 
 
 export default getData;

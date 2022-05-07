@@ -1,23 +1,24 @@
-import ItemCount from "../../components/ItemCount/ItemCount"
 import ItemList from "../../components/ItemList/ItemList"
 import getData from "../../services/getData"
+import './ItemListContainer.css'
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = (greeting) => {
+const ItemListContainer = () => {
 
   const [products, setProducts] = useState([])
   
+  const {categoryid} = useParams()
 
   useEffect(() => {
-    getData
+    getData(categoryid)
       .then((response) => setProducts(response))
       .catch((error) => console.log("error: ", error));
-  }, [])
+  }, [categoryid])
 
   return (
     <>
-      {greeting.text}
-      {/* <ItemCount stock={10} initial={1} /> */}
+      <h1>Categoria de Productos</h1>
       <ItemList products={products} />
     </>
   )
