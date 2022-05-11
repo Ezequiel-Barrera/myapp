@@ -1,7 +1,18 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 import ItemCount from '../ItemCount/ItemCount'
 import '../Item/Item.css'
 
 const ItemDetail = ({ product }) => {
+
+    const [isInCart, setIsInCart] = useState(false)
+
+    function onAdd(count){
+        console.log(`Agregaste al carrito ${count} productos.`)
+        setIsInCart(true)
+    }
+
     return (
         <div className='card'>
             <div className='header'>
@@ -21,7 +32,15 @@ const ItemDetail = ({ product }) => {
             <div className='footer'>
                 <h2>${product.price}</h2>
             </div>
-            <ItemCount stock={product.stock} initial={1} />
+            {isInCart ? 
+                <Button variant="danger">
+                    <Link to={`/cart`}>
+                        Ir al carrito
+                    </Link>
+                </Button>
+            :
+                <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
+            }
         </div>
     );
 };

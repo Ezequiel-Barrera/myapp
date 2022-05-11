@@ -6,7 +6,6 @@ const ItemListContainer = () => {
 
     const [product, setProduct] = useState([])
     
-
     useEffect(() => {
         getData
         .then((response) => setProduct(response[6]))

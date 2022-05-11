@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import './ItemCount.css'
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 
     const [count, setCount] = useState(initial);
 
@@ -20,11 +20,11 @@ const ItemCount = ({ stock, initial }) => {
         }
     };
 
-    const onAdd = () => {
+    const handleClick = () => {
         const message = `Agregaste ${count} producto`;
         count === 1 ? alert(message) : alert(`${message}s`);
-    };
-
+        onAdd(count)
+    }
 
     return (
         <div className="item-count-container">
@@ -33,7 +33,7 @@ const ItemCount = ({ stock, initial }) => {
                 <h3>{count}</h3>
                 <Button variant="primary" onClick={onIncrease}>+</Button>{" "}
             </div>
-            <Button variant="danger" onClick={onAdd}>Agregar al Carrito</Button>{" "}
+            <Button variant="danger" onClick={handleClick}>Agregar al Carrito</Button>{" "}
         </div>
     );
 };
