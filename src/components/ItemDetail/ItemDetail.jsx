@@ -2,15 +2,18 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import ItemCount from '../ItemCount/ItemCount'
+import useCartContext from '../../store/CartContext';
 import '../Item/Item.css'
 
 const ItemDetail = ({ product }) => {
 
     const [isInCart, setIsInCart] = useState(false)
+    const { addToCart } = useCartContext()
 
     function onAdd(count){
-        console.log(`Agregaste al carrito ${count} productos.`)
         setIsInCart(true)
+        addToCart(product, count)
+        console.log("agregado al cart: ", product, count)
     }
 
     return (
