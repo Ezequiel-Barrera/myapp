@@ -1,14 +1,11 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useCartContext from '../../store/CartContext';
 import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
 
 
 
 const NavBar = () => {
-    const {contextFunction} = useCartContext()
-    contextFunction()
     return (
         <Navbar bg="light" expand="lg">
         <Container>

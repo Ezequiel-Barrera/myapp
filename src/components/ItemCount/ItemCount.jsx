@@ -21,8 +21,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     };
 
     const handleClick = () => {
-        const message = `Agregaste ${count} producto`;
-        count === 1 ? alert(message) : alert(`${message}s`);
         onAdd(count)
     }
 
