@@ -14,7 +14,7 @@ function getData(id) {
     })
 }
 
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
 
     const [product, setProduct] = useState([])
     const { productid } = useParams()
@@ -32,4 +32,4 @@ const ItemListContainer = () => {
     )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer

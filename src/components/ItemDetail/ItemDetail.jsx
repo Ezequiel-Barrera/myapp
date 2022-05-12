@@ -15,34 +15,39 @@ const ItemDetail = ({ product }) => {
         console.log("agregado al cart: ", product, count)
     }
 
-    return (
-        <div className='card'>
-            <div className='header'>
-                <h1>{product.title}</h1>
-            </div>
-            <div className='content'>
-                <div className='img-container'>
-                    <img className='product-img' src={product.image} alt="Imagen del producto" />
+    if(!product) {
+        return <h4>Cargando...</h4>
+    } else {
+        return (
+            <div className='card'>
+                <div className='header'>
+                    <h1>{product.title}</h1>
                 </div>
-                <div>
-                    {product.categoria}
+                <div className='content'>
+                    <div className='img-container'>
+                        <img className='product-img' src={product.image} alt="Imagen del producto" />
+                    </div>
+                    <div>
+                        {product.categoria}
+                    </div>
+                    <div>
+                        {product.descripcion}
+                    </div>
                 </div>
-                <div>
-                    {product.descripcion}
+                <div className='footer'>
+                    <h2>${product.price}</h2>
                 </div>
+                {isInCart ? 
+                    <Link to={`/cart`}>
+                        Ir al carrito
+                    </Link>
+                :
+                    <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
+                }
             </div>
-            <div className='footer'>
-                <h2>${product.price}</h2>
-            </div>
-            {isInCart ? 
-                <Link to={`/cart`}>
-                    Ir al carrito
-                </Link>
-            :
-                <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
-            }
-        </div>
-    );
+        );
+    }
+
 };
 
 export default ItemDetail;
