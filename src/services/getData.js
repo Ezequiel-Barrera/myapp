@@ -79,21 +79,6 @@ const data = [
         stock: "10",
     },
 ];
-    
-function getData(categoriaid) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if (categoriaid) {
-                const productoFiltrado = data.filter( product => {
-                    return data.categoria == categoriaid
-                })
-                resolve(productoFiltrado)
-            } else {
-                resolve(data);
-            }
-        }, 700);
-    })
-}   
 
 
-export default getData;
+export default data;

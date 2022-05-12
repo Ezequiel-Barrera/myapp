@@ -12,7 +12,7 @@ const Item = ({ title, image, id, price, categoria }) => {
                 <div className='img-container'>
                     <img className='product-img' src={image} alt="Imagen del producto" />
                 </div>
-                    <Link to={`/products/${id}`}>Ver Detalle</Link>
+                    <Link to={`/product/${id}`}>Ver Detalle</Link>
             </div>
             <div className='footer'>
                 <h2>${price}</h2>
