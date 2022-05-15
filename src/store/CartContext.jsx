@@ -58,7 +58,7 @@ export function CartContextProvider({children}) {
     }
 
     return (
-        <Provider value={{ cart, cantInCart, calcPriceCart, addToCart, clearCart, removeFromCart, clearCart, isInCart, getIntemFromCart}}>
+        <Provider value={{ cart, cantInCart, calcPriceCart, addToCart, removeFromCart, clearCart, isInCart, getIntemFromCart}}>
             {children}
         </Provider>
     )

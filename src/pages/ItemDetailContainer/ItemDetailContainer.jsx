@@ -1,8 +1,10 @@
 import ItemDetail from "../../components/ItemDetail/ItemDetail"
-import data from "../../services/getData"
+//import data from "../../services/getData"
+import { getItem as getData } from "../../database/firebase"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
+/*
 function getData(id) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -13,6 +15,7 @@ function getData(id) {
         }, 700);
     })
 }
+*/
 
 const ItemDetailContainer = () => {
 

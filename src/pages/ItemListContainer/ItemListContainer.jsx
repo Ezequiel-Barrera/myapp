@@ -1,9 +1,11 @@
 import ItemList from "../../components/ItemList/ItemList"
-import data from "../../services/getData"
+//import data from "../../services/getData"
+import { getAllItems as getData, getItemsByCategory } from "../../database/firebase";
 import './ItemListContainer.css'
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 
+/*
 function getData(categoriaid) {
   return new Promise((resolve) => {
       setTimeout(() => {
@@ -18,18 +20,21 @@ function getData(categoriaid) {
       }, 700);
   })
 }
+*/
 
 const ItemListContainer = () => {
 
   const [products, setProducts] = useState([])
   
   const {categoriaid} = useParams()
-  console.log('ID: '+ categoriaid)
+  //console.log('ID: '+ categoriaid)
 
   useEffect(() => {
-    getData(categoriaid)
-      .then((response) => setProducts(response))
-      .catch((error) => console.log("error: ", error));
+    if(categoriaid === undefined) {
+      getData().then((response) => setProducts(response))
+    } else {
+      getItemsByCategory(categoriaid).then((response) => setProducts(response))
+    }
   }, [categoriaid])
 
   return (
