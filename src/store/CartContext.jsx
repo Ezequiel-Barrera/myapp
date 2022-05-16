@@ -8,29 +8,29 @@ const {Provider} = CartContext;
 export function CartContextProvider({children}) {
     const [cart, setCart] = useState([])
 
-    const addToCart = (item, cant) => {
-        if(isInCart(item.id)) {
-            const newCart = cart.map(cartItem => {
-                if(cartItem.id === item.id) {
-                    const copyItem = {...cartItem}
-                    copyItem.cant += cant
-                    return copyItem
+    const addToCart = (product, cant) => {
+        if(isInCart(product.id)) {
+            const newCart = cart.map(cartProduct => {
+                if(cartProduct.id === product.id) {
+                    const copyProduct = {...cartProduct}
+                    copyProduct.cant += cant
+                    return copyProduct
                 } else {
-                    return cartItem
+                    return cartProduct
                 }
             })
             setCart(newCart)
         }
         else {
-            const newItem = {...item, cant}
-            setCart([...cart, newItem])
+            const newProduct = {...product, cant}
+            setCart([...cart, newProduct])
         }
     }
 
     const removeFromCart = (id) => {
         const newCart = [...cart]
-        const cartFilter = newCart.filter( item => {
-            return item.id !== id
+        const cartFilter = newCart.filter( product => {
+            return product.id !== id
         })
         setCart(cartFilter)
     }
@@ -38,27 +38,36 @@ export function CartContextProvider({children}) {
     const clearCart = () => { setCart([]) }
 
     const isInCart = (id) => {
-        return cart.some(itemCart => itemCart.id == id)
+        return cart.some(productCart => productCart.id == id)
     }
 
     const getIntemFromCart = (id) => {
-        return cart.find(itemCart => itemCart.id == id)
+        return cart.find(productCart => productCart.id == id)
     }
 
     const cantInCart = () => {
         const total = 0
-        cart.forEach(itemCart => { total + itemCart.cant})
+        cart.forEach(productCart => { total + productCart.cant})
         return total
     }
 
     const calcPriceCart = () => {
         const total = 0
-        cart.forEach(itemCart => { total + itemCart.price})
+        cart.forEach(productCart => { total + productCart.price})
         return total
     }
 
     return (
-        <Provider value={{ cart, cantInCart, calcPriceCart, addToCart, removeFromCart, clearCart, isInCart, getIntemFromCart}}>
+        <Provider 
+            value={{ 
+                cart, 
+                addToCart, 
+                removeFromCart, 
+                clearCart, 
+                isInCart, 
+                getIntemFromCart,
+                cantInCart, 
+                calcPriceCart}}>
             {children}
         </Provider>
     )

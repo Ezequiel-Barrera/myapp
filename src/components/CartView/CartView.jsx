@@ -2,13 +2,9 @@ import { Link } from 'react-router-dom'
 import useCartContext from '../../store/CartContext'
 
 const CartView = () => {
+    const { cart, removeFromCart, clearCart, calcPriceCart, cantInCart} = useCartContext()
 
-// 1- consumir el CartContext
-// 2- mostrar el contenido de CartContext
-// 3- mostrar interfaz para eliminar items y/o vaciar el carrito
-
-    const { cart, removeFromCart, clearCart } = useCartContext()
-    console.log("CART", cart)
+    console.log(cantInCart())
 
     if (cart.length === 0){
         return <div style={{textAlign: "center"}}>
@@ -16,17 +12,22 @@ const CartView = () => {
             <Link to="/">Volver al catalogo</Link>
         </div>
     } else {
-        return <div>
-            {cart.map(itemCart => {
-            return <div style={{textAlign: "center"}} key={itemCart.id}>
-                <h2>{itemCart.title}</h2>
-                <h2>{itemCart.cant}</h2>
-                <h2>${itemCart.cant * itemCart.price}</h2>
-                <button onClick={() => removeFromCart(itemCart.id)} style={{color:"red"}} >X</button>
-            </div>
-        })}
+        return <>
+            <div>
+            {cart.map(productCart => {
+            return <div style={{textAlign: "center"}} key={productCart.id}>
+                    <h2>{productCart.title}</h2>
+                    <h2>{productCart.cant}</h2>
+                    <h2>${productCart.cant * productCart.price}</h2>
+                    <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}} >X</button>
+                    <div>
+                        <h4>El precio total es {() => calcPriceCart()}</h4>
+                    </div>
+                </div>
+            })}
             <button onClick={clearCart}>Vaciar carrito</button>
-        </div>
+            </div>
+        </>
     }
 }
 

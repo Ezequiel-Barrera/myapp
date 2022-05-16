@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount'
+import { Button } from "react-bootstrap";
 import useCartContext from '../../store/CartContext';
+import ItemCount from '../ItemCount/ItemCount'
 import '../Item/Item.css'
 
 const ItemDetail = ({ product }) => {
-
     const [isInCart, setIsInCart] = useState(false)
-    const { addToCart } = useCartContext()
-
+    const {addToCart} = useCartContext()
+    
     function onAdd(count){
         setIsInCart(true)
         addToCart(product, count)
@@ -37,13 +37,16 @@ const ItemDetail = ({ product }) => {
                 <div className='footer'>
                     <h2>${product.price}</h2>
                 </div>
-                {isInCart ? 
-                    <Link to={`/cart`}>
-                        Ir al carrito
-                    </Link>
-                :
+                
+                {isInCart ?
+                    <>
+                    <Link to="/cart"><Button variant="primary">Ir al carrito</Button></Link>
+                    <Link to="/">Seguir comprando</Link>
+                    </>
+                    :
                     <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
                 }
+                
             </div>
         );
     }
