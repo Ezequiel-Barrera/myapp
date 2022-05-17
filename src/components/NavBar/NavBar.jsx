@@ -6,6 +6,8 @@ import imagenLogo from '../../assets/image/imagenLogo.jpg'
 
 const NavBar = () => {
     return (
+        <>
+        {/* 
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand href="/">
@@ -26,6 +28,30 @@ const NavBar = () => {
             </Container>
             <CartWidget />
         </Navbar>
+        */}
+        <header>
+            {/*<div className="menu">
+                <box-icon name="menu"></box-icon>
+            </div>*/}
+            <a href="#">
+                <div className="logo">
+                    <img src={imagenLogo} alt="logo" width="90" />
+                </div>
+            </a>
+            <ul>
+                <li>
+                    <a href="#">INICIO</a>
+                </li>
+                <li>
+                    <a href="#">CATEGORIAS</a>
+                </li>
+            </ul>
+            <div className='cart'>
+                <box-icon name="cart"></box-icon>
+                <span className='item__total'>0</span>
+            </div>
+        </header>
+        </>
     )
 }
 

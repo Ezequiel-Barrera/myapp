@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CartContextProvider } from './store/CartContext'
 import CartView from './components/CartView/CartView'
+import 'boxicons'
 
 
 function App() {
