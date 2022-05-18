@@ -4,7 +4,7 @@ import Item from "../Item/Item"
 const ItemList = ({products}) => {
     
     return (
-        <div className='item-list'>
+        <div className="productos">
             {products.map((product) => {
                 console.log(product);
                 return (

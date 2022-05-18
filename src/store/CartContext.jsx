@@ -46,13 +46,13 @@ export function CartContextProvider({children}) {
     }
 
     const cantInCart = () => {
-        const total = 0
+        let total = 0
         cart.forEach(productCart => { total + productCart.cant})
         return total
     }
 
     const calcPriceCart = () => {
-        const total = 0
+        let total = 0
         cart.forEach(productCart => { total + productCart.price})
         return total
     }
