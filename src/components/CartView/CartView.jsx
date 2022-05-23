@@ -13,21 +13,21 @@ const CartView = () => {
         </div>
     } else {
         return <>
-            <div>
-            {cart.map(productCart => {
-            return <div style={{textAlign: "center"}} key={productCart.id}>
-                    <h2>{productCart.title}</h2>
-                    <h2>{productCart.cant}</h2>
-                    <h2>${productCart.cant * productCart.price}</h2>
-                    <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}} >X</button>
-                    <div>
-                        <h4>El precio total es {() => calcPriceCart()}</h4>
-                    </div>
+        <div>
+        {cart.map(productCart => {
+        return <div style="carrito" key={productCart.id}>
+                <h2>{productCart.title}</h2>
+                <h2>{productCart.cant}</h2>
+                <h2>${productCart.cant * productCart.price}</h2>
+                <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}} >X</button>
+                <div>
+                    <h4>El precio total es {() => calcPriceCart()}</h4>
                 </div>
-            })}
-            <button onClick={clearCart}>Vaciar carrito</button>
             </div>
-        </>
+        })}
+        <button onClick={clearCart}>Vaciar carrito</button>
+        </div>
+    </>
     }
 }
 

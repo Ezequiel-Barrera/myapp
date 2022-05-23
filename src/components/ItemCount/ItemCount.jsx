@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import './ItemCount.css'
 
 const ItemCount = ({ stock, initial, onAdd }) => {
     const [count, setCount] = useState(initial);
@@ -25,7 +24,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     
     return (
         <div className="item-count-container">
-            <div>
+            <div className="buttom">
                 <Button variant="primary" onClick={onDecrease}>-</Button>{" "}
                 <h4>{count}</h4>
                 <Button variant="primary" onClick={onIncrease}>+</Button>{" "}

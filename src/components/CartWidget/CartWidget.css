@@ -1,7 +1,26 @@
-.cart-widget {
-    font-size: 18px;
-    margin-right: 30px;
-    font-size: 25px;
-    color: #fff;
+header .cart{
+    position: relative;
     cursor: pointer;
+}
+header .cart box-icon{
+    padding-top: 15px;
+    width: 40px;
+    height: 40px;
+}
+header .cart span{
+    position: absolute;
+    top: -0.5rem;
+    right: -1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid red;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: crimson;
 }

@@ -1,8 +1,8 @@
-import ItemListContainer from './pages/ItemListContainer/ItemListContainer'
-import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer'
-import NavBar from './components/NavBar/NavBar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CartContextProvider } from './store/CartContext'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import NavBar from './components/NavBar/NavBar'
 import CartView from './components/CartView/CartView'
 import 'boxicons'
 

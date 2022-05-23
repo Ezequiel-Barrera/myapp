@@ -1,8 +1,7 @@
-import ItemList from "../../components/ItemList/ItemList"
 import { getAllItems as getData, getItemsByCategory } from "../../database/firebase";
-import './ItemListContainer.css'
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
+import ItemList from "../ItemList/ItemList"
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([])
@@ -17,9 +16,10 @@ const ItemListContainer = () => {
 
     return (
       <>
-        <h1 className="title">Categoria de {!categoriaid ? "todos los productos" : categoriaid}</h1>
         <div>
+          <h1 className="titleILC">Todos los productos {!categoriaid ? " de la tienda " : "de " + categoriaid}</h1>
           <ItemList products={products} />
+          {/*<button onClick={dataToFirebase}>Add to Firestore</button>*/}
         </div>
       </>
     )

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import useCartContext from '../../store/CartContext';
 import ItemCount from '../ItemCount/ItemCount'
-import '../Item/Item.css'
 
 const ItemDetail = ({ product }) => {
     const [isInCart, setIsInCart] = useState(false)
@@ -18,36 +17,32 @@ const ItemDetail = ({ product }) => {
     if(!product) {
         return <h4>Cargando...</h4>
     } else {
-        return (
-            <div className='card'>
-                <div className='header'>
-                    <h1>{product.title}</h1>
-                </div>
-                <div className='content'>
-                    <div className='img-container'>
-                        <img className='product-img' src={product.image} alt="Imagen del producto" />
+        return (<>
+                <div className="producto">
+                    <div className="title">
+                        <h2>{product.title}</h2>
                     </div>
                     <div>
-                        {product.categoria}
+                        <div className="img">
+                            <img src={product.image} alt="Imagen del producto" />
+                        </div>
                     </div>
                     <div>
-                        {product.descripcion}
+                        <h3>{product.categoria}</h3>
+                        <p>{product.descripcion}</p>
+                        <h2>${product.price}</h2>
+                        {isInCart ?
+                            <>
+                            <Link to="/cart"><Button variant="primary">Ir al carrito</Button></Link>
+                            <Link to="/">Seguir comprando</Link>
+                            </>
+                            :
+                            <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
+                        }
                     </div>
+
                 </div>
-                <div className='footer'>
-                    <h2>${product.price}</h2>
-                </div>
-                
-                {isInCart ?
-                    <>
-                    <Link to="/cart"><Button variant="primary">Ir al carrito</Button></Link>
-                    <Link to="/">Seguir comprando</Link>
-                    </>
-                    :
-                    <ItemCount onAdd={onAdd} stock={product.stock} initial={1} />
-                }
-                
-            </div>
+            </>
         );
     }
 

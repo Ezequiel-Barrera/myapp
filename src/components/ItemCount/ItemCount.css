@@ -1,9 +1,5 @@
 .item-count-container {
-    background-color: whitesmoke;
     padding: 20px;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
 }
 
 .item-count-container div {
@@ -11,25 +7,27 @@
     justify-content: space-around;
     align-items: center;
 }
-
-.item-count-container button {
-    width: 90%;
-    padding: 5px;
-    margin: 5px 10px;
-}
-
-.item-count-container div button {
-    background-color: rgb(89, 153, 196);
-    border: none;
-    font-size: x-large;
-    cursor: pointer;
-}
-
 .item-count-container div input {
     padding: 5px;
     text-align: center;
 }
 
-.item-count-container div button:hover {
-    color: rgb(110, 110, 121);
+
+.buttom a{
+    width: 100%;
+    text-transform: inherit;
+    color: #08a05c;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.buttom a:hover{
+    
+    color: black;
+    background-color: #08a05c60;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.44);
+    border: 6px solid transparent;
 }

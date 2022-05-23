@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 5fr));
     gap: 3rem 1rem;    
-    padding: 5rem 3rem;
+    padding: 3rem 1rem;
     margin: 0 auto;
     box-sizing: border-box;
 }

@@ -1,7 +1,5 @@
-
 const data = [
     {
-        id: 1,
         image:
             "https://images-na.ssl-images-amazon.com/images/I/616VM20%2BAzL.__AC_SY300_SX300_QL70_ML2_.jpg",
         title: "Ryzen 5900x",
@@ -11,7 +9,6 @@ const data = [
         stock: "4",
     },
     {
-        id: 2,
         image: "https://i.blogs.es/588c7d/amd6/original.jpeg",
         title: "Ryzen 5800x",
         descripcion: "este es el segundo producto",
@@ -20,7 +17,6 @@ const data = [
         stock: "10",
     },
     {
-        id: 3,
         image:
             "https://http2.mlstatic.com/D_NQ_NP_884972-MLA40182457265_122019-O.jpg",
         title: "Ryzen 2200G",
@@ -30,7 +26,6 @@ const data = [
         stock: "5",
     },
     {
-        id: 4,
         image:
             "https://app.contabilium.com/files/explorer/20302/Productos-Servicios/concepto-4886285.jpg",
         title: "Rade 6800XT",
@@ -40,7 +35,6 @@ const data = [
         stock: "3",
     },
     {
-        id: 5,
         image: "https://m.media-amazon.com/images/I/81U5H5c0jyL._AC_SL1500_.jpg",
         title: "Rade 6900XT",
         descripcion: "este es el quinto producto",
@@ -49,7 +43,6 @@ const data = [
         stock: "15",
     },
     {
-        id: 6,
         image:
             "https://s3-sa-east-1.amazonaws.com/saasargentina/0q6tMtEfaFFScGS5Wuhn/imagen",
         title: "RTX 3080",
@@ -59,7 +52,6 @@ const data = [
         stock: "1",
     },
     {
-        id: 7,
         image:
             "https://http2.mlstatic.com/D_NQ_NP_963530-MLA46418767025_062021-O.jpg",
         title: "RTX 3070",
@@ -69,7 +61,6 @@ const data = [
         stock: "3",
     },
     {
-        id: 8,
         image:
             "https://s3-sa-east-1.amazonaws.com/saasargentina/0q6tMtEfaFFScGS5Wuhn/imagen",
         title: "RTX 3020",
