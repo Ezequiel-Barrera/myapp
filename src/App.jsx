@@ -6,9 +6,7 @@ import NavBar from './components/NavBar/NavBar'
 import CartView from './components/CartView/CartView'
 import 'boxicons'
 
-
 function App() {
-
   return (
     <div className="App">
       <CartContextProvider>
@@ -23,7 +21,7 @@ function App() {
         </BrowserRouter>
       </CartContextProvider>
     </div>
-  )
+  );
 }
 
 export default App

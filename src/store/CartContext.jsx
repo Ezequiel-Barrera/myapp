@@ -35,26 +35,24 @@ export function CartContextProvider({children}) {
         setCart(cartFilter)
     }
 
-    const clearCart = () => { setCart([]) }
+    const clearCart = () => { setCart([]) };
 
     const isInCart = (id) => {
-        return cart.some(productCart => productCart.id == id)
+        return cart.some(productCart => productCart.id == id);
     }
 
     const getIntemFromCart = (id) => {
-        return cart.find(productCart => productCart.id == id)
+        return cart.find(productCart => productCart.id == id);
     }
 
     const cantInCart = () => {
-        let total = 0
-        cart.forEach(productCart => { total + productCart.cant})
-        return total
+        return cart.reduce(( acc, productCart) =>  acc + productCart.cant, 0);
     }
 
     const calcPriceCart = () => {
-        let total = 0
-        cart.forEach(productCart => { total + productCart.price})
-        return total
+        let total = 0;
+        cart.forEach(productCart => { total += productCart.price * productCart.cant})
+        return total;
     }
 
     return (

@@ -18,16 +18,16 @@ const ItemDetail = ({ product }) => {
         return <h4>Cargando...</h4>
     } else {
         return (<>
+                <div className="title">
+                    <h2>{product.title}</h2>
+                </div>
                 <div className="producto">
-                    <div className="title">
-                        <h2>{product.title}</h2>
-                    </div>
                     <div>
                         <div className="img">
                             <img src={product.image} alt="Imagen del producto" />
                         </div>
                     </div>
-                    <div>
+                    <div className="info_producto">
                         <h3>{product.categoria}</h3>
                         <p>{product.descripcion}</p>
                         <h2>${product.price}</h2>
