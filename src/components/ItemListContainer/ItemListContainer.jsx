@@ -16,11 +16,13 @@ const ItemListContainer = () => {
 
     return (
       <>
-        <div>
-          <h1 className="titleILC">Todos los productos {!categoriaid ? " de la tienda " : "de " + categoriaid}</h1>
-          <ItemList products={products} />
-          {/*<button onClick={dataToFirebase}>Add to Firestore</button>*/}
-        </div>
+      <div>
+          <h1>Todos los productos {!categoriaid ? " de la tienda " : "de " + categoriaid}</h1>
+          <div>
+            <ItemList products={products} />
+            {/*<button onClick={dataToFirebase}>Add to Firestore</button>*/}
+          </div>
+      </div>
       </>
     )
 }

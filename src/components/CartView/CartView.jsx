@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import { createBuyOrder } from '../../database/firebase'
 import useCartContext from '../../store/CartContext'
-import CartItem from '../CartItem/CartItem'
 import swal from 'sweetalert';
-import Swal from 'sweetalert2'
 
 const CartView = () => {
     const { cart, removeFromCart, clearCart, cantInCart, calcPriceCart} = useCartContext()
@@ -48,74 +46,136 @@ const CartView = () => {
     }
 
     return (
-        <section className="text-gray-600 body-font">
-            <div className="container px-5 py-12 mx-auto">
-                <div className="flex flex-col text-center w-full mb-12">
-                    <h1 className='sm:text-3x1 uppercase text-2x1 font-large title-font mb-8'>
+        <>
+        <section>
+            <div>
+                <div>
+                    <h1>
                         Carrito
                     </h1>
                     <hr />
                 </div>
-                <div className='flex flex-wrap sm:-m-4 -mx-8 -mb-10'>
+                <div>
                     {cart.length === 0 && (
-                        <span className='w-2/3 text-center m-auto block py-1 px-2 rounded bg-red-50'>
+                        <span>
                             <p>Tu carrito esta vacio</p>
                             <Link to="/">Volver al catalogo</Link>
                         </span>
                     )}
                     {cart && cart.length !== 0 && (
-                        <div className='m-auto'>
-                            <table className='min-w-full table-auto'>
-                                <thead className='justify-between'>
-                                    <tr className='bg-gray-800'>
-                                        <th className='px-8 py-2'>
-                                            <span className='text-white'>Producto</span>
-                                        </th>
-                                        <th className='px-8 py-2'>
-                                            <span className='text-white'>Precio</span>
-                                        </th>
-                                        <th className='px-8 py-2'>
-                                            <span className='text-white'>Cantidad</span>
-                                        </th>
-                                        <th className='px-8 py-2'>
-                                            <span className='text-white'>Total</span>
-                                        </th>
-                                        <th className='px-8 py-2'>
-                                            <span className='text-white'>Acciones</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody className='bg-gray-200'>
-                                    {cart && cart.map((item) => (
-                                        <CartItem 
-                                            key={item.id}
-                                            id={item.id}
-                                            title={item.title}
-                                            image={item.image}
-                                            price={item.price}
-                                            cantidad={item.cant}
-                                            
-                                        />
-                                    ))}
-                                </tbody>
-                            </table>
-                            <div className='mt-8'>
-                                <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}}>
-                                    <box-icon name='x'></box-icon>
-                                </button>
-                                <button className='flex mx-auto mt-2 text-white ng-green-500 border-3'>
-                                    <Link to="/">Volver al catalogo</Link>
-                                </button>
-                                <button onClick={handleBuy} className='flex mx-auto mt-2 text-white ng-green-500 border-3'>
-                                    <Link to="/">Comprar</Link>
-                                </button>
-                            </div>
-                        </div>
+
+                        <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>mdo</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>fat</td>
+                                <td>Otto</td>
+                                <td>mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry the Bird</td>
+                                <td>twitter</td>
+                                <td>Otto</td>
+                                <td>Thornton</td>
+                                <td>mdo</td>
+                            </tr>
+                        </tbody>
+                        </table>
+
+
+
                     )}
                 </div>
             </div>
+
+            <div>
+                <button>
+                <Link to="/">Volver al catalogo</Link>
+                </button>
+                <button onClick={handleBuy}>
+                <Link to="/">Comprar</Link>
+                </button>
+            </div>
         </section>
+        </>
     )
 }
 
 export default CartView
+
+{/*
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <span>Producto</span>
+                </th>
+                <th>
+                    <span>Precio</span>
+                </th>
+                <th>
+                    <span>Cantidad</span>
+                </th>
+                <th>
+                    <span>Total</span>
+                </th>
+                <th>
+                    <span>Acciones</span>
+                </th>
+            </tr>
+        </thead>
+            {cart && cart.map((item) => {
+                <tbody>
+                    return <>
+                        <div style="carrito" key={productCart.id}>
+                        <h2>{productCart.title}</h2>
+                        <h2>{productCart.cant}</h2>
+                        <h2>${productCart.cant * productCart.price}</h2>
+                        <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}} >X</button>
+                        <div>
+                            <h4>El precio total es {() => calcPriceCart()}</h4>
+                        </div>
+                        </div>
+                    </>
+                </tbody>
+            })}
+    </table>
+</div>
+)}
+</div>
+</div>
+
+<div>
+<button>
+<Link to="/">Volver al catalogo</Link>
+</button>
+<button onClick={handleBuy}>
+<Link to="/">Comprar</Link>
+</button>
+</div>
+</section>
+
+*/}

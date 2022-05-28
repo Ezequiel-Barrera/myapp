@@ -1,12 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'
+import './index.css';
+import 'boxicons';
 
 ReactDOM.render(
   <React.StrictMode>
       <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-    )
+  </React.StrictMode>,
+  document.getElementById('root')
+)
