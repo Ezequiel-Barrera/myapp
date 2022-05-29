@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { createBuyOrder } from '../../database/firebase'
 import useCartContext from '../../store/CartContext'
 import swal from 'sweetalert';
+import './CartView.css'
 
 const CartView = () => {
     const { cart, removeFromCart, clearCart, cantInCart, calcPriceCart} = useCartContext()
@@ -47,135 +48,58 @@ const CartView = () => {
 
     return (
         <>
-        <section>
-            <div>
-                <div>
-                    <h1>
-                        Carrito
-                    </h1>
-                    <hr />
-                </div>
-                <div>
-                    {cart.length === 0 && (
-                        <span>
+            <div className='carrito'>
+                {cart.length === 0 && (
+                    <>
+                        <div className='carrito__vacio'>
                             <p>Tu carrito esta vacio</p>
                             <Link to="/">Volver al catalogo</Link>
-                        </span>
-                    )}
-                    {cart && cart.length !== 0 && (
-
+                        </div>
+                    </>
+                )}
+                {cart && cart.length !== 0 && (
+                    <div className='carrito__productos'>
                         <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>mdo</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>fat</td>
-                                <td>Otto</td>
-                                <td>mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>twitter</td>
-                                <td>Otto</td>
-                                <td>Thornton</td>
-                                <td>mdo</td>
-                            </tr>
-                        </tbody>
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Accion</th>
+                                </tr>
+                            </thead>
+                            {cart.map((productCart => {
+                                return (
+                                    <>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" key={productCart.id}>{productCart.id}</th>
+                                            <td><img className='carrito__img' src={productCart.image} alt="Imagen del producto" /></td>
+                                            <td>{productCart.title}</td>
+                                            <td>${productCart.cant * productCart.price}</td>
+                                            <td>{productCart.cant}</td>
+                                            <td><button onClick={() => removeFromCart(productCart.id)} className='carrito__btn eliminar'>Eliminar</button></td>
+                                        </tr>
+                                    </tbody>
+                                    </>
+                                )
+                                })
+                            )}
                         </table>
-
-
-
-                    )}
-                </div>
+                        <div>
+                            <h3>El precio total es ${calcPriceCart()}</h3>
+                        </div>
+                        <div className="carrito__buttom">
+                                <Link className='carrito__btn' to="/">Volver al Catalogo</Link>
+                                <Link onClick={handleBuy} className='carrito__btn' to="/">Comprar</Link>
+                        </div>
+                    </div>
+                )}
             </div>
-
-            <div>
-                <button>
-                <Link to="/">Volver al catalogo</Link>
-                </button>
-                <button onClick={handleBuy}>
-                <Link to="/">Comprar</Link>
-                </button>
-            </div>
-        </section>
         </>
     )
 }
 
 export default CartView
-
-{/*
-
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    <span>Producto</span>
-                </th>
-                <th>
-                    <span>Precio</span>
-                </th>
-                <th>
-                    <span>Cantidad</span>
-                </th>
-                <th>
-                    <span>Total</span>
-                </th>
-                <th>
-                    <span>Acciones</span>
-                </th>
-            </tr>
-        </thead>
-            {cart && cart.map((item) => {
-                <tbody>
-                    return <>
-                        <div style="carrito" key={productCart.id}>
-                        <h2>{productCart.title}</h2>
-                        <h2>{productCart.cant}</h2>
-                        <h2>${productCart.cant * productCart.price}</h2>
-                        <button onClick={() => removeFromCart(productCart.id)} style={{color:"red"}} >X</button>
-                        <div>
-                            <h4>El precio total es {() => calcPriceCart()}</h4>
-                        </div>
-                        </div>
-                    </>
-                </tbody>
-            })}
-    </table>
-</div>
-)}
-</div>
-</div>
-
-<div>
-<button>
-<Link to="/">Volver al catalogo</Link>
-</button>
-<button onClick={handleBuy}>
-<Link to="/">Comprar</Link>
-</button>
-</div>
-</section>
-
-*/}
