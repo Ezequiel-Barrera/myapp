@@ -12,15 +12,15 @@ header{
     background-color: white;
     box-shadow: 0 5px 10px #08a05c50;
 }
-a{
+.navbar__a{
     color: black!important;
     text-decoration: none!important;
     text-transform: uppercase!important;
 }
-a:hover{
+.navbar__a:hover{
     color: #08a05c!important;
 }
-li{
+li {
     list-style: none;
 }
 header ul{
