@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
 import { createBuyOrder } from '../../database/firebase'
 import useCartContext from '../../store/CartContext'
-import swal from 'sweetalert';
+import swal from '@sweetalert/with-react';
 import './CartView.css'
 
 const CartView = () => {
     const { cart, removeFromCart, clearCart, calcPriceCart} = useCartContext()
-
 
     function handleBuy() {
         const itemsToBuy = cart.map((item) => ({
@@ -31,23 +30,60 @@ const CartView = () => {
 
         swal({
             title: "Estas seguro que deseas confirmar la compra?",
-            text: "Si aceptas que generara un ID por tu orden de compra",
+            text: "A continuacion tendras los datos de la Orden de Compra",
             icon: "warning",
             buttons: ["No", "Si"]
         }).then(respuesta => {
             if(respuesta){
-                createBuyOrder(buyOrder).then( respuestaID => {
+                createBuyOrder(buyOrder)
+                .then( respuestaID => {
                     swal({
-                        title: "La Orden de Compra se genero con exito",
-                        text: "ID: "+ respuestaID,
-                        icon: "success",
-                        timer:"10000"
-                    })}
-                );
+                        icon: "info",
+                        buttons: ["No", "Si"],
+                        content: (
+                            <div>
+                                <h1><strong>Orden de Compra: Datos Personales</strong></h1>
+                                <p>Nombre: <strong>{buyOrder.buyer.name}</strong></p>
+                                <p>Telefono: <strong>{buyOrder.buyer.phone}</strong></p>
+                                <p>Email: <strong>{buyOrder.buyer.email}</strong></p>
+                                <p>Total a pagar: <strong>${buyOrder.total}</strong></p>
+                            </div>
+                        )
+                    }).then(respuestas => {
+                        if(respuestas){
+                            swal({
+                                title: "ORDEN DE COMPRA COMPLETADA",
+                                text: "'Id' de la compra: "+ respuestaID,
+                                icon: "success",
+                                content: (<div><strong>Muchas gracias!</strong></div>)
+                            })
+                        } else {
+                            swal({
+                                content: (
+                                    <div>
+                                        <h1><strong>OPERACION CANCELADA</strong></h1>
+                                        <p>La orden de compra, no se genero, ha sido Cancelada.</p>
+                                        <p>Muy bien, volvamos a la pagina de inicio!</p>
+                                    </div>
+                                ),
+                                icon: "error",
+                                button: {
+                                    text: "OK",
+                                    visible: true,
+                                },
+                            })
+                        }
+                    })
+                })
             } else {
                 swal({
-                    title: "Operacion Cancelada",
-                    text: "La orden de compra, no se genero, ha sido Cancelada. Muy bien, volvamos a inicio!",
+                    content: (
+                        <div>
+                            <h1><strong>OPERACION CANCELADA</strong></h1>
+                            <p>La orden de compra, no se genero, ha sido Cancelada.</p>
+                            <p>Muy bien, volvamos a la pagina de inicio!</p>
+                        </div>
+                    ),
                     icon: "error",
                     button: {
                         text: "OK",
