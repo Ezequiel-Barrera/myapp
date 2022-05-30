@@ -8,9 +8,12 @@
     justify-content: center;
     box-sizing: border-box;
 }
+.carrito__vacio P{
+    text-align: center;
+}
 .carrito__vacio a{
-    width: 8rem;
-    height: 4rem;
+    width: 12rem;
+    height: 3rem;
     align-items: center;
     border: none;
     outline: 0;

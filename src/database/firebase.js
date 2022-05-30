@@ -72,7 +72,7 @@ export async function createBuyOrder(orderData) {
     const miColeccion = collection(firestoreDB, "buyOrders");
     const orderDoc = await addDoc(miColeccion, orderWithDate);
 
-    console.log('orden lista con el ID: ', orderDoc.id)
+    return (orderDoc.id)
 }
 
 /*

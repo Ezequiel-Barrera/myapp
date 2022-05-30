@@ -20,6 +20,19 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     
     const handleClick = () => {
         onAdd(count)
+        swal({
+            title: "Listo!", 
+            text: "Se agrego este producto a tu carrito", 
+            icon: "success",
+            timer:"1000",
+            button: {
+                text: "OK",
+                value: true,
+                visible: false,
+                className: "",
+                closeModal: true,
+            }
+        });
     }
     
     return (

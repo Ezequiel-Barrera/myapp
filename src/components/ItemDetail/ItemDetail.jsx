@@ -11,17 +11,16 @@ const ItemDetail = ({ product }) => {
     function onAdd(count){
         setIsInCart(true)
         addToCart(product, count)
-        console.log("agregado al cart: ", product, count)
     }
 
     if(!product) {
         return (
             <>
                 <div className='producto__detail__fluid'>
-                    <div class='container-fluid'>
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                    <div className='container-fluid'>
+                        <div className="d-flex justify-content-center">
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">Loading...</span>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,6 @@ const ItemList = ({products}) => {
     return (
         <>
             {products.map((product) => {
-                console.log(product);
                 return (
                     <Item 
                         key={product.id} 
