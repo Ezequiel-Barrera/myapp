@@ -1,5 +1,7 @@
 # Quickmini Buystore
-_ Bienvenido, yo soy **Ezequiel**, y en este repositorio podrás encontrar mi primera tienda e-commerce, desarrollada con [ReactJS](https://es.reactjs.org/)._
+Bienvenido, yo soy **Ezequiel**, y en este repositorio podrás encontrar mi primera tienda e-commerce, desarrollada con [ReactJS](https://es.reactjs.org/).
+
+[Quickmini Buystore](https://myapp-delta-silk.vercel.app/)
 
 ![tienda](src/assets/image/tienda.jpg)
 
